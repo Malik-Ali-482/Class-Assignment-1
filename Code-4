@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath> // Removed the semicolon here
+
+using namespace std;
+
+int main() {
+    double a, b, c, root1, root2, discriminant;
+
+    cout << "Enter coefficient of x^2:\n";
+    cin >> a;
+    cout << "Enter coefficient of x:\n";
+    cin >> b;
+    cout << "Enter constant value:\n";
+    cin >> c;
+
+    try {
+        discriminant = (b * b) - (4 * a * c);
+
+        if (discriminant < 0) {
+            throw runtime_error("Equation has two complex roots.");
+        } else if (discriminant == 0) {
+            int root = -b / (2 * a);
+            cout << "Equation has one real root.\n";
+            cout << "Root: " << root;
+        } else if (discriminant > 0) {
+            root1 = (-b + sqrt(discriminant)) / (2 * a); // Use sqrt() for square root
+            root2 = (-b - sqrt(discriminant)) / (2 * a); // Use sqrt() for square root
+
+            cout << "Equation has two real roots:\n";
+            cout << "Root 1: " << root1 << endl;
+            cout << "Root 2: " << root2 << endl;
+        }
+    } catch (runtime_error &error) {
+        cout << error.what();
+    }
+
+    return 0;
+}
