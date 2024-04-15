@@ -1,0 +1,45 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+    ofstream fout;
+    fout.open("cookie.txt");
+
+    int total, PerBox, BoxesPerContainer;
+    
+    cout << "Enter the total number of cookies: ";
+    cin >> total;
+    
+    cout << "Enter the number of cookies to place in a box (up to 24): ";
+    cin >> PerBox;
+    while (PerBox > 24) {
+        cout << "A box can hold only 24 cookies. Please enter again: ";
+        cin >> PerBox;
+    }
+
+    cout << "Enter the number of cookie boxes to put in a container (up to 75): ";
+    cin >> BoxesPerContainer;
+    while (BoxesPerContainer > 75) {
+        cout << "A container can only hold 75 boxes of cookies. Please enter again: ";
+        cin >> BoxesPerContainer;
+    }
+
+    int leftover_Cookies = total % PerBox;
+    int leftover_Boxes = (total / PerBox) % BoxesPerContainer;
+    int containers = total / (PerBox * BoxesPerContainer);
+
+    cout << "Number of containers to ship: " << containers << endl;
+    cout << "Number of boxes to ship: " << containers * BoxesPerContainer << endl;
+    cout << "Number of leftover cookies: " << leftover_Cookies << endl;
+    cout << "Number of leftover boxes: " << leftover_Boxes << endl;
+
+    fout << "Number of containers to ship: " << containers << endl;
+    fout << "Number of boxes to ship: " << containers * BoxesPerContainer << endl;
+    fout << "Number of leftover cookies: " << leftover_Cookies << endl;
+    fout << "Number of leftover boxes: " << leftover_Boxes << endl;
+
+    fout.close();
+    return 0;
+}
