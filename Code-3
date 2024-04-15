@@ -1,0 +1,64 @@
+#include <iostream>
+#include <fstream>
+#include <stdexcept>
+
+using namespace std;
+
+int main() {
+    ifstream fin("seconds.txt");
+
+    try {
+        if (!fin) {
+            throw runtime_error("File not found!");
+        }
+
+        int file_seconds;
+        while (fin >> file_seconds) {
+            cout << "Conversion of " << file_seconds << ":\n";
+
+            int years = file_seconds / 31536000;
+            file_seconds %= 31536000;
+            int months = file_seconds / 2628000;
+            file_seconds %= 2628000;
+            int days = file_seconds / 86400;
+            file_seconds %= 86400;
+            int hours = file_seconds / 3600;
+            file_seconds %= 3600;
+            int minutes = file_seconds / 60;
+            int seconds = file_seconds % 60;
+
+            cout << "Years: " << years << " Months: " << months << " Days: " << days
+                 << " Hours: " << hours << " Minutes: " << minutes << " Seconds: " << seconds << endl;
+        }
+        fin.close();
+
+        char choice;
+        cout << "\nDo you wish to calculate it in weeks, days, hours, minutes, and seconds? Enter 'Y' or 'y' to convert: ";
+        cin >> choice;
+
+        if (choice == 'Y' || choice == 'y') {
+            fin.open("seconds.txt");
+            while (fin >> file_seconds) {
+                cout << "Conversion of " << file_seconds << ":\n";
+
+                int weeks = file_seconds / 604800;
+                file_seconds %= 604800;
+                int days = file_seconds / 86400;
+                file_seconds %= 86400;
+                int hours = file_seconds / 3600;
+                file_seconds %= 3600;
+                int minutes = file_seconds / 60;
+                int seconds = file_seconds % 60;
+
+                cout << "Weeks: " << weeks << " Days: " << days << " Hours: " << hours
+                     << " Minutes: " << minutes << " Seconds: " << seconds << endl;
+            }
+            fin.close();
+        }
+    } catch (const runtime_error &error) {
+        cout << "ERROR! Something went wrong.\n";
+        cout << error.what() << endl;
+    }
+
+    return 0;
+}
