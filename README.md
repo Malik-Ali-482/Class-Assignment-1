@@ -25,7 +25,7 @@ accordingly
 4. The roots of a quadratic equation ax2 + bx + c = 0, a ≠ 0 are given by the following formula:
 
 −b ± √b
-2 − 4ac
+2 − 4ac/
 2a
 
 In this formula, the term b2 − 4ac is called the discriminant. If b
