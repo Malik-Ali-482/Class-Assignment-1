@@ -1,1 +1,34 @@
-
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+int num1, num2, num3, i, j, k;
+cout &lt;&lt; &quot;Enter three sides of a triangle= &quot;;
+cin &gt;&gt; num1 &gt;&gt; num2 &gt;&gt; num3;
+if (num2 &gt; num1 &amp;&amp; num2 &gt; num3) {
+i = num2;
+j = num1;
+k = num3;
+}
+else if (num1 &gt; num2 &amp;&amp; num1 &gt; num3) {
+i = num1;
+j = num2;
+k = num3;
+}
+else if (num3 &gt; num1 &amp;&amp; num3 &gt; num2) {
+i = num3;
+j = num1;
+k = num2;
+}
+else {
+i = num1;
+j = num2;
+k = num3;
+}
+if ((i * i) == ((k * k) + (j * j))) {
+cout &lt;&lt; &quot;It is a right angle trianle.&quot;;
+}
+else {
+cout &lt;&lt; &quot;it is not a right angle triangle.&quot;;
+}
+Return 0;
+}
